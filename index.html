@@ -8,11 +8,14 @@
 </head>
 <body>
 <div ng-controller="StoreController as store">
-<!--   notice that we just say product instead of store.product now -->
-  <div ng-repeat="product in store.products">
-    <h1> {{product.name}} </h1>
-    <h2> ${{product.price}} </h2>
-    <p> {{product.description}} </p>
+  <ul class="list-group"> <!-- bootstrap -->
+    <li class="list-group-item" ng-repeat="product in store.products">
+    <h3> {{product.name}}
+    <em class="pull-right"> {{product.price | currency}} </em>
+    <img ng-src="{{product.images[0].full}}" />
+    </h3>
+    </li>
+    </ul>
      <button ng-show="product.canPurchase"> Add to Cart </button>
   </div>
 </div>
@@ -26,6 +29,5 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <script type="text/javascript" src="app.js"></script>
-<p> {{ "hello" + " you"}} </p>
 </body>
 </html>
