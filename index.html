@@ -7,18 +7,42 @@
 
 </head>
 <body>
-<div ng-controller="StoreController as store">
-  <ul class="list-group"> <!-- bootstrap -->
-    <li class="list-group-item" ng-repeat="product in store.products">
+  <div ng-controller="StoreController as store">
+    <header>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">an Angular store</h2>
+    </header>
+  <div class="list-group"> <!-- bootstrap -->
+    <div class="list-group-item" ng-repeat="product in store.products">
     <h3> {{product.name}}
     <em class="pull-right"> {{product.price | currency}} </em>
     <img ng-src="{{product.images[0].full}}" />
     </h3>
-    </li>
-    </ul>
+
+    <section ng-init="tab = 1">  <!-- sets default tab open -->
+      <ul class = "nav nav-pills">
+        <li> <a href ng-click="tab = 1"> Description </a> </li>
+        <li> <a href ng-click="tab = 2"> Specifications </a> </li>
+        <li> <a href ng-click="tab = 3"> reviews </a> </li>
+      </ul>
+        <div class ="panel" ng-show="tab === 1">
+        <h4>Description</h4>
+        <p>{{product.description}}</p>
+        </div>
+        <div class ="panel" ng-show="tab === 2">
+        <h4>Specifications</h4>
+        <blockquote>None yet</blockquote>
+        </div>
+        <div class ="panel" ng-show="tab === 3">
+        <h4>Reviews</h4>
+        <blockquote>None yet</blockquote>
+        </div>
+     </section>
+
+    </div>
+    </div>
      <button ng-show="product.canPurchase"> Add to Cart </button>
   </div>
-</div>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
