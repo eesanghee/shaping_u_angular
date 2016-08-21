@@ -1,4 +1,4 @@
-(function() {
+// (function() {
   var app = angular.module('gemStore', []);
 
   app.controller('StoreController', function(){
@@ -32,6 +32,26 @@
     };
   });
 
+  app.directive('productTitle', function(){
+  return {
+    restrict: 'E', //type of directive, e for element
+    templateUrl: 'product-title.html'
+  }
+})
+
+  app.directive("productDescriptions", function() {
+    return {
+      restrict: 'E',
+      templateUrl: "product-descriptions.html"
+    };
+  });
+
+  app.directive("productSpecs", function(){
+  return {
+    restrict: 'A',
+    templateUrl: "product-specs.html"
+  };
+});
   var gems = [
     {
       name: 'Azurite',
@@ -112,4 +132,4 @@
       }]
     }
   ];
-})();
+// })();
